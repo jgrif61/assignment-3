@@ -54,40 +54,40 @@ ACGRRGCGAGCGAGSGAGCGCTATATATATATGCRGCTSGCTGTG
 
   **FIND**:
   ```
-
+(AT)*
   ```
 
 2. What is one alternative way to find this same sequence? Enter your answer in the triple quotes directly below:
 
   **FIND**:
   ```
-
+(AT){5}
   ```
 
 3. What is one more alternative way to find this same sequence? Enter your answer in the triple quotes below:
 
   **FIND**:
   ```
-
+(AT)+
   ```
 
 4. How would you find all instances of `R` **or** `S` (degenerate base codes) in the same DNA sequence, above? Enter your answer in the triple quotes below:
 
   **FIND**:
   ```
-
+[RS]
   ```
 
 4. How would you find all instances of `R` **or** `S` (degenerate base codes) in the same DNA sequence, above, and **replace** them with the ambiguous base code `N`.  Place the search string in the `FIND` section below, and the replacement string in the `REPLACE` section below:
 
   **FIND**:
   ```
-
+[RS]
   ```
 
   **REPLACE**:
   ```
-
+N
   ```
 
 ## Task Group 2
@@ -109,24 +109,24 @@ spider,8,0,0
 
   **FIND**:
   ```
-
+(.*),(.*),(.*),(.*)
   ```
 
   **REPLACE**:
   ```
-
+$4,$3,$2,$1
   ```
 
 2. You realize that only the last two columns of data are in the wrong order (3,4).  You want to reverse the order of only the last two columns (4,3).  How do you do that?
 
   **FIND**:
   ```
-
+(.*),(.*),(.*),(.*)
   ```
 
   **REPLACE**:
   ```
-
+$1,$2,$4,$3
   ```
 
 
@@ -134,12 +134,12 @@ spider,8,0,0
 
   **FIND**:
   ```
-
+,
   ```
 
   **REPLACE**:
   ```
-
+\t
   ```
 
 
@@ -147,12 +147,12 @@ spider,8,0,0
 
   **FIND**:
   ```
-
+(.*),(.*),(.*),(.*)
   ```
 
   **REPLACE**:
   ```
-
+$1|$2\t$3:
   ```
 
 ## Task Group 3
@@ -169,36 +169,36 @@ Here is a typical fastq-formatted header from an Illumina sequencer (this is a r
 
   **FIND**:
   ```
-
+\S*\s(\d).*
   ```
 
   **REPLACE**:
   ```
-
+$1
   ```
 
 1. The flowcell serial number is the 3rd set of characters that looks like `HA8VPADXX`.  How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
   ```
-
+@\w*.\w*.(\w*).*
   ```
 
   **REPLACE**:
   ```
-
+$1
   ```
 
 1. Now, assume that the flowcell serial number stays in the same position (the third "column" of information separated by colons) but also assume that the flowcell value can take on different values. How would you parse out **only the flowcell** from the header above?
 
   **FIND**:
   ```
-
+@\w*.\w*.(\w*).*
   ```
 
   **REPLACE**:
   ```
-
+$1
   ```
 
 ## Task Group 4
@@ -218,12 +218,12 @@ AGGGTGAAGGTGGCGCAGAATGAGCTGGGACAGCAGATCCTAGCTGACTTCGAGGAAGCCT
 
   **FIND**:
   ```
-
+@(\w*).*(\n.*)*
   ```
 
   **REPLACE**:
   ```
-
+$1
   ```
 
 2. This one is also pretty hard... How would you parse the fastq sequence to turn it into a fasta sequence where the resulting fasta sequence is of the form:
@@ -235,12 +235,12 @@ AGGGTGAAGGTGGCGCAGAATGAGCTGGGACAGCAGATCCTAGCTGACTTCGAGGAAGCCT
 
   **FIND**:
   ```
-
+@(\w*):(\d*:)(\w*):(\d*:)*\d{4}\s(\d).*
   ```
 
   **REPLACE**:
   ```
-
+$1|$3|$5
   ```
 
 ## Task Group 5
@@ -257,12 +257,12 @@ ACGRRGCGAGCGAGSGAGCGCTATATATATATGCRGCTSGCTGTG
 
   **FIND**:
   ```
-
+(\w*)(ATATATATAT)(\w*)
   ```
 
   **REPLACE**:
   ```
-
+$2
   ```
 
 You are finished.  You are probably also happy and/or angry or even, possibly, both.  The regex pain is complete for the time being.  Next time, we'll be doing this in [Python](http://python.org).
